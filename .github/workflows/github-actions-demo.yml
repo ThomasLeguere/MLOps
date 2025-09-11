@@ -14,4 +14,4 @@ jobs:
         with:
           context: TP1/miniproject
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ghcr.io/${{github.event.repository.name,,}}/web_app:latest
+          tags: ghcr.io/${github.event.repository.name@L}/web_app:latest

@@ -9,5 +9,5 @@ jobs:
       - name: Setup pyenv
         run: python3 -m venv .env
       - run: source .env/bin/activate
-      - run: pip install TP1/miniproject/requirements.txt
+      - run: pip install -r TP1/miniproject/requirements.txt
       - run: pytest TP1/miniproject/

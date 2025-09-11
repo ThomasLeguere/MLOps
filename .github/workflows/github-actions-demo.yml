@@ -4,10 +4,14 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - name: Setup pyenv
-        run: python3 -m venv .env
-      - run: source .env/bin/activate
-      - run: pip install -r TP1/miniproject/requirements.txt
-      - run: pytest TP1/miniproject/
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: TP1/miniproject
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ghcr.io/${{github.event.repository.name@L}}/web_app:latest

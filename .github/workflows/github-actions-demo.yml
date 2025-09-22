@@ -33,7 +33,7 @@ jobs:
           tags: ghcr.io/${{ env.REPO }}/web_app:latest
           
 
-      - name: Deploy model on the VM
+      - name: Deploy model on the super VM
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ vars.VM_CONNEXION_HOST }}

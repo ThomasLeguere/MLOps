@@ -36,8 +36,8 @@ jobs:
       - name: Deploy model on the VM
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{ variables.VM_CONNEXION_HOST }}
-          username: ${{ variables.VM_CONNEXION_USERNAME }}
+          host: ${{ env.VM_CONNEXION_HOST }}
+          username: ${{ env.VM_CONNEXION_USERNAME }}
           password: ${{ secrets.VM_PASSWORD }}
           script: |
             echo "Pulling latest Docker image..."
@@ -48,4 +48,4 @@ jobs:
             docker rm web_app || true
 
             echo "Starting new container..."
-            docker run -d --restart unless-stopped --name web_app -p ${{ VM_DEPLOY_PORT }}:${{ VM_DEPLOY_PORT }} ${{ env.REPO }}/web_app:latest
+            docker run -d --restart unless-stopped --name web_app -p ${{ env.VM_DEPLOY_PORT }}:${{ env.VM_DEPLOY_PORT }} ${{ env.REPO }}/web_app:latest

@@ -50,4 +50,4 @@ jobs:
             docker rm web_app || true
 
             echo "Starting new container..."
-            docker run -d --restart unless-stopped --name web_app -p ${{ vars.VM_DEPLOY_PORT }}:${{ vars.VM_DEPLOY_PORT }} ${{ env.REPO }}/web_app:latest
+            docker run -d --restart unless-stopped --name web_app -p ${{ vars.VM_DEPLOY_PORT }}:${{ vars.VM_DEPLOY_PORT }} ghcr.io/${{ env.REPO }}/web_app:latest

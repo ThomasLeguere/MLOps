@@ -41,7 +41,6 @@ jobs:
           password: ${{ secrets.VM_PASSWORD }}
           script: |
             echo ${{ vars.VM_CONNEXION_USERNAME }}
-            echo ${{ vars.VM_CONNEXION_HOST }}
 
             echo "Pulling latest Docker image..."
             docker pull ${{ env.REPO }}/web_app:latest
